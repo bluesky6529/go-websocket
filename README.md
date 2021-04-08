@@ -8,7 +8,10 @@ https://ithelp.ithome.com.tw/articles/10237376
 
 ### remember windows to linux env
 ```
-set go env=linux && go build . 
+SET CGO_ENABLED=0
+SET GOOS=linux
+SET GOARCH=amd64
+go build .
 ```
 
 ## how to use
