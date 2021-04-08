@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"strings"
@@ -15,17 +14,14 @@ func main() {
 		b += str + os.Args[i]
 		str = "\n"
 	}
-	fmt.Println(b)
 
 	for _, addr := range strings.Split(strings.ReplaceAll(string(b), "\r\n", "\n"), "\n") {
 		conn, res, err := websocket.DefaultDialer.Dial(addr, nil)
 		if err != nil {
-			log.Printf("connect to %s, err: %s", addr, err)
+			log.Printf("\033[31m connect to %s, err: %s \033[0m", addr, err)
 		} else {
-			log.Printf("connect to %s, res: %+v", addr, res)
+			log.Printf("\033[32m connect to %s, res: %+v \033[0m", addr, res)
 			conn.Close()
 		}
 	}
-	//log.Printf("Press the any key to terminate.")
-	//fmt.Scanln(&b)
 }
